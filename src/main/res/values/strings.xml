@@ -1,0 +1,19 @@
+<resources>
+    <string name="biometric_failed">Fingerprint not recognized</string>
+
+    <string name="biometric_title">Verify</string>
+    <string name="biometric_subtitle">Enable authentication</string>
+    <string name="biometric_subtitle_on_login">Authenticate Fingerprint</string>
+    <string name="biometric_subtitle_on_login_30">Log in using your Fingerprint or Device PIN</string>
+    <string name="biometric_desc_enable">Use your fingerprint to enable authentication to access the application</string>
+    <string name="biometric_desc_on_login">Use your fingerprint to access the application</string>
+    <string name="biometric_negative_button_text">Cancel</string>
+
+    <string name="biometric_error_sdk_not_supported">Current version of Android is not supported</string>
+    <string name="biometric_error_hardware_not_supported">Device does not support biometric authentication</string>
+    <string name="biometric_error_fingerprint_not_available">Fingerprint is not registered in the device</string>
+    <string name="biometric_error_permission_not_granted">Permission is not granted by user</string>
+    <string name="biometric_failure">Authentication failed</string>
+    <string name="biometric_cancelled">Authentication cancelled by user</string>
+    <string name="biometric_success">Login Successful</string>
+</resources>
