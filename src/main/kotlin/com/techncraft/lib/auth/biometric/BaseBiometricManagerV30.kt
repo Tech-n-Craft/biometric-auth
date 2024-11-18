@@ -9,19 +9,19 @@ import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 
 @TargetApi(Build.VERSION_CODES.R)
-open class BiometricManagerV30 : BiometricManagerV28() {
+open class BaseBiometricManagerV30 : BaseBiometricManagerV28() {
   protected var mCancellationSignalV30 = CancellationSignal()
 
   fun displayBiometricPromptV30(biometricCallback: BiometricCallback) {
     val biometricPrompt = BiometricPrompt(
-      context!!,
+      context,
       ContextCompat.getMainExecutor(context),
       BiometricCallbackV30(biometricCallback)
     )
 
     val promptInfo = BiometricPrompt.PromptInfo.Builder()
       .setTitle(title)
-      .setSubtitle(context?.getString(R.string.biometric_subtitle_on_login_30))
+      .setSubtitle(context.getString(R.string.biometric_subtitle_on_login_30))
       .setDescription(description)
       .setAllowedAuthenticators(DEVICE_CREDENTIAL or BIOMETRIC_STRONG)
       .build()

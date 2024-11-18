@@ -6,8 +6,7 @@ import com.techncraft.lib.auth.biometric.BiometricUtils.isBiometricAvailable
 import com.techncraft.lib.auth.biometric.BiometricUtils.isPermissionGranted
 
 
-open class BiometricManager protected constructor(biometricBuilder: BiometricBuilder) :
-  BiometricManagerV30() {
+open class BiometricManager protected constructor(biometricBuilder: BiometricBuilder) : BaseBiometricManagerV30() {
   fun authenticate(biometricCallback: BiometricCallback) {
     if (title.isEmpty()) {
       biometricCallback.onBiometricAuthenticationInternalError("Biometric Dialog title cannot be null")
@@ -40,21 +39,14 @@ open class BiometricManager protected constructor(biometricBuilder: BiometricBui
     when (Build.VERSION.SDK_INT) {
       Build.VERSION_CODES.R -> if (!mCancellationSignalV30.isCanceled) mCancellationSignalV30.cancel()
       Build.VERSION_CODES.P -> if (!mCancellationSignalV28.isCanceled) mCancellationSignalV28.cancel()
-      else -> if (!mCancellationSignalV23.isCanceled) mCancellationSignalV23.cancel()
     }
   }
 
   private fun displayBiometricDialog(biometricCallback: BiometricCallback) {
     when {
-      Build.VERSION.SDK_INT >= Build.VERSION_CODES.R -> displayBiometricPromptV30(
-        biometricCallback
-      )
+      Build.VERSION.SDK_INT >= Build.VERSION_CODES.R -> displayBiometricPromptV30(biometricCallback)
 
-      Build.VERSION.SDK_INT >= Build.VERSION_CODES.P -> displayBiometricPromptV28(
-        biometricCallback
-      )
-
-      else -> displayBiometricPromptV23(biometricCallback)
+      Build.VERSION.SDK_INT >= Build.VERSION_CODES.P -> displayBiometricPromptV28(biometricCallback)
     }
   }
 
